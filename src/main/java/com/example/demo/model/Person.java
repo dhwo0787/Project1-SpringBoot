@@ -6,25 +6,24 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Person {
-	private UUID id;
 	
 	@NotBlank
-	private String name;
+	private String email;
+	@NotBlank
+	private String password;
 	
-	public Person(@JsonProperty("id") UUID id, @JsonProperty("name") String name) {
-		this.id = id;
-		this.name = name;
+	public Person(@JsonProperty("email")String email,@JsonProperty("password")String password) {
+		this.email = email;
+		this.password = password;
 	}
-	public UUID getId() {
-		return id;
+	public String getPassword() {
+		return password;
 	}
-	public String getName() {
-		return name;
+	public String getEmail() {
+		return email;
 	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
-	public void setString(String name) {
-		this.name = name;
+	public void setPassword(String password) {this.password = password;}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

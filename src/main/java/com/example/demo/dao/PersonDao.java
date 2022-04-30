@@ -8,20 +8,19 @@ import com.example.demo.model.Person;
 
 public interface PersonDao {
 	
-	int insertPerson(UUID id, Person person);
+	// int insertPerson(UUID id, Person person);
 	
 	default int insertPerson(Person person) {
-		UUID id = UUID.randomUUID();
-		return insertPerson(id,person);
+		return 0;
 	}
 	
 	List<Person> selectAllPeople();
 	
-	Optional<Person> selectPersonById(UUID id);
+	Optional<Person> selectPersonByEmail(String email);
 	
-	int deletePersonById(UUID id);
+	int deletePersonByEmail(String email);
 	
-	int updatePersonById(UUID id, Person person);
-	
-	
+	int updatePersonByEmail(String email,Person update);
+
+	int checkPerson(Person person);
 }

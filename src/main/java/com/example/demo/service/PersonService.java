@@ -29,14 +29,12 @@ public class PersonService {
 	public List<Person> getAllPeople() {
 		return personDao.selectAllPeople();
 	}
-	public Optional<Person> getPersonById(UUID id) {
-		return personDao.selectPersonById(id);
+	public Optional<Person> getPersonByEmail(String email) {
+		return personDao.selectPersonByEmail(email);
 	}
-	public int deletePerson(UUID id) {
-		return personDao.deletePersonById(id);
-		
+	public int deletePerson(String email) { return personDao.deletePersonByEmail(email);}
+	public int updatePerson(String email, Person newPerson) {
+		return personDao.updatePersonByEmail(email, newPerson);
 	}
-	public int updatePerson(UUID id, Person newPerson) {
-		return personDao.updatePersonById(id, newPerson);
-	}
+	public int checkPerson(Person person){ return personDao.checkPerson(person);}
 }

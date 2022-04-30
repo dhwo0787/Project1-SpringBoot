@@ -33,24 +33,26 @@ public class PersonController {
 	}
 	
 	@PostMapping
-	public void addPerson(@Valid @NonNull @RequestBody Person person) {
-		personService.addPerson(person);
-	}
+	public void checkPerson(@Valid @NonNull @RequestBody Person person) { personService.checkPerson(person);}
 	
 	@GetMapping
 	public List<Person> getAllPeople() {
 		return personService.getAllPeople();
 	}
-	@GetMapping(path = "/{id}")
-	public Person getPersonById(@PathVariable("id") UUID id) {
-		return personService.getPersonById(id).orElse(null);
+	@GetMapping(path = "/{email}")
+	public Person getPersonByEmail(@PathVariable("email") String email) {
+		return personService.getPersonByEmail(email).orElse(null);
 	}
-	@DeleteMapping(path = "/{id}")
-	public void deletePersonById(@PathVariable("id") UUID id) {
-		personService.deletePerson(id);
+	@DeleteMapping(path = "/{email}")
+	public void deletePersonByEmail(@PathVariable("email") String email) {
+		personService.deletePerson(email);
 	}
-	@PutMapping(path = "/{id}")
-	public void updatePerson(@PathVariable("id") UUID id ,@Valid @NonNull @RequestBody Person personToUpdate) {
-		personService.updatePerson(id, personToUpdate);
+	@PutMapping
+	public void addPerson(@Valid @NonNull @RequestBody Person person) {
+		personService.addPerson(person);
+	}
+	@PutMapping(path = "/{email}")
+	public void updatePerson(@PathVariable("email") String email ,@Valid @NonNull @RequestBody Person personToUpdate) {
+		personService.updatePerson(email, personToUpdate);
 	}
 }
