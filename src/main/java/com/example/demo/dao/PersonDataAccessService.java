@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.Person;
 
+// PERSON DB 제어
 @Repository("postgres")
 public class PersonDataAccessService implements PersonDao {
 

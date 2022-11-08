@@ -31,26 +31,30 @@ public class PersonController {
 	public PersonController(PersonService personService) {
 		this.personService = personService;
 	}
-	
+	// 데이터베이스 내 회원 정보 확인
 	@PostMapping
 	public void checkPerson(@Valid @NonNull @RequestBody Person person) { personService.checkPerson(person);}
-	
+	// 모든 회원 정보 출력
 	@GetMapping
 	public List<Person> getAllPeople() {
 		return personService.getAllPeople();
 	}
+	// 특정 이메일을 가진 회원 정보 출력
 	@GetMapping(path = "/{email}")
 	public Person getPersonByEmail(@PathVariable("email") String email) {
 		return personService.getPersonByEmail(email).orElse(null);
 	}
+	// 회원 삭제
 	@DeleteMapping(path = "/{email}")
 	public void deletePersonByEmail(@PathVariable("email") String email) {
 		personService.deletePerson(email);
 	}
+	// 회원 가입
 	@PutMapping
 	public void addPerson(@Valid @NonNull @RequestBody Person person) {
 		personService.addPerson(person);
 	}
+	// 회원 정보 변경
 	@PutMapping(path = "/{email}")
 	public void updatePerson(@PathVariable("email") String email ,@Valid @NonNull @RequestBody Person personToUpdate) {
 		personService.updatePerson(email, personToUpdate);

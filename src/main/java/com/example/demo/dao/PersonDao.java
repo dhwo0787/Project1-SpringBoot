@@ -10,9 +10,7 @@ public interface PersonDao {
 	
 	// int insertPerson(UUID id, Person person);
 	
-	default int insertPerson(Person person) {
-		return 0;
-	}
+	int insertPerson(Person person);
 	
 	List<Person> selectAllPeople();
 	

@@ -3,23 +3,28 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotBlank;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 public class Score {
-    @NotBlank
     private String email;
-    @NotBlank
     private int scoreId;
     private String scale;
-    private String rhythm;
-
+    private String dir;
+    private int accuracy;
+    private Timestamp c_time;
     public Score(@JsonProperty("email") String email
                 ,@JsonProperty("scoreId") int scoreId
                 ,@JsonProperty("scale") String scale
-                ,@JsonProperty("rhythm") String rhythm) {
+                ,String dir
+                ,int accuracy
+                ,Timestamp c_time) {
         this.email = email;
         this.scoreId = scoreId;
         this.scale = scale;
-        this.rhythm = rhythm;
+        this.dir = dir;
+        this.accuracy = accuracy;
+        this.c_time = c_time;
     }
 
     public String getEmail() {
@@ -31,16 +36,19 @@ public class Score {
     public String getScale() {
         return scale;
     }
-    public String getRhythm() {
-        return rhythm;
+    public String getDir() {
+        return dir;
     }
+    public int getAccuracy() {
+        return accuracy;
+    }
+    public Timestamp getC_time() {return c_time;}
     public void setEmail(String email) {
         this.email = email;
     }
     public void setScoreId(int scoreId) {this.scoreId = scoreId;}
     public void setScale(String scale) {this.scale = scale;}
-    public void setRhythm(String rhythm) {
-        this.rhythm = rhythm;
-    }
-
+    public void setDir(String dir) {this.dir = dir;}
+    public void setAccuracy(int accuracy) {this.accuracy = accuracy;}
+    public void setC_time(Timestamp c_time) {this.c_time = c_time;}
 }
